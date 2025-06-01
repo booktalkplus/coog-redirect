@@ -5,12 +5,11 @@
   <meta charset="UTF-8">
   <title>쿠지 리디렉션 중간페이지</title>
   <script>
-    // URL에서 q 파라미터를 읽어 쿠팡 앱스앱 주소로 리디렉션
     const params = new URLSearchParams(window.location.search);
     const keyword = params.get("q");
     if (keyword) {
       const encoded = encodeURIComponent(keyword);
-      window.location.href = "https://script.google.com/macros/s/AKfycbwn5Fn9ib3J2_NTJ0ZN0Yl4Ay0tjJ-KEYMfcxKKctSYgobmLyWwVn_yMUF_1tENVj-Z/exec?q=" + encoded;
+      window.location.href = "https://script.google.com/macros/s/AKfycbxhU64duIfVUzth48PgYYOdQLTgF99UPmPqt2ebW0XJJdN2GR1gKnZTYe-xhXQPRcnv/exec?q=" + encoded;
     } else {
       document.write("<p>검색어가 없습니다.</p>");
     }

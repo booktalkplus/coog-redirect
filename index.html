@@ -1,14 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <title>쿠지 중간 리디렉션 페이지</title>
+
+  <!--
+    ✅ 리디렉션 방식 설명
+    이 페이지는 검색어(q 파라미터)를 받아 쿠팡 앱스앱 주소로 자동 이동하는 중간 페이지입니다.
+    meta refresh 방식으로 구현하여 GPT, Gmail, 카카오톡 등에서도 안정적으로 작동합니다.
+  -->
+
   <script>
     const keyword = new URLSearchParams(window.location.search).get("q");
     if (keyword) {
       const encoded = encodeURIComponent(keyword);
-      const finalUrl = "https://script.google.com/macros/s/AKfycbxhU64duIfVUzth48PgYYOdQLTgF99UPmPqt2ebW0XJJdN2GR1gKnZTYe-xhXQPRcnv/exec?q=" + encoded;
+      const finalUrl = "https://script.google.com/macros/s/AKfycbxdpCXzRC0vsSa1KTNL-TA5hajmwXsj4ouUq8qzRYzR1vr111_2Geza3eOGGCIDOPjKIQ/exec?q=" + encoded;
       document.write('<meta http-equiv="refresh" content="0; url=' + finalUrl + '">');
     } else {
       document.write("<p>검색어가 없습니다.</p>");

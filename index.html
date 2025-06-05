@@ -2,12 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>쿠지 중간 리디렉션 페이지</title>
+  <title>쿠지 중간 리디렉션 페이지 (Fallback 버전)</title>
 
   <!--
-    ✅ 리디렉션 방식 설명
-    이 페이지는 검색어(q 파라미터)를 받아 쿠팡 앱스앱 주소로 자동 이동하는 중간 페이지입니다.
-    meta refresh 방식으로 구현하여 GPT, Gmail, 카카오톡 등에서도 안정적으로 작동합니다.
+    ✅ 리디렉션 이중 안전 구조 (meta + JS)
+    meta refresh와 JavaScript location.replace를 동시에 사용하여
+    어떤 환경에서도 리디렉션이 실패하지 않도록 설계되었습니다.
   -->
 
   <script>
@@ -15,6 +15,11 @@
     if (keyword) {
       const encoded = encodeURIComponent(keyword);
       const finalUrl = "https://script.google.com/macros/s/AKfycbxdpCXzRC0vsSa1KTNL-TA5hajmwXsj4ouUq8qzRYzR1vr111_2Geza3eOGGCIDOPjKIQ/exec?q=" + encoded;
+
+      // JavaScript 리디렉션
+      window.location.replace(finalUrl);
+
+      // fallback: meta refresh 삽입
       const meta = document.createElement("meta");
       meta.httpEquiv = "refresh";
       meta.content = "0; url=" + finalUrl;
